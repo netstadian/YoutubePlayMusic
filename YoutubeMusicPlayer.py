@@ -1,6 +1,8 @@
 import requests
+import webbrowser
 from bs4 import BeautifulSoup
 from random import randint
+import time
 
 page_numbers = ["SADqAwA%253D", "SBTqAwA%253D", "SCjqAwA%253D"]
 search_terms_poll = ["Chopin", "beethoven", "Mozart"]
@@ -25,9 +27,10 @@ def youtubeLinkCrawler(search_term, max_page):
         page += 1
 
 def getPlayLink(result_link):
+    play_link = result_link[randint(0, len(result_link) - 1)]
+    webbrowser.open(play_link)
+    #print(play_link)
 
-    print(result_link)
-
-youtubeLinkCrawler(str(search_term), 1)
-getPlayLink(result_link)
+#youtubeLinkCrawler(str(search_term), 1)
+#getPlayLink(result_link)
 
