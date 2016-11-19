@@ -11,8 +11,8 @@ search_terms_poll = ["Chopin", "beethoven", "Mozart"]
 search_term = search_terms_poll[randint(0,len(search_terms_poll)-1)]
 result_link=[]
 isYoutubePlayed = False
-startTime = "12"
-endTime ="18"
+startTime = 1
+endTime = 23
 #search term check
 #print(search_term)
 
@@ -31,19 +31,21 @@ def youtubeLinkCrawler(search_term, max_page):
                 result_link.append(href_url)
         page += 1
 
-def getPlayLink(result_link, startTime, endTime):
+def getPlayLink(result_link, startTime, endTime, isYoutubePlayed):
     play_link = result_link[randint(0, len(result_link) - 1)]
     ts = datetime.now().strftime('%H')
-    print(ts)
-    print(startTime)
-    print(endTime)
-    while ts >= startTime and ts <= endTime:
-        print(ts)
-        time.sleep(60)
+    print("Not playing, current time is: ", ts)
+    time.sleep(5)
+    #print(startTime)
+    #print(endTime)
+    while int(ts) >= startTime and int(ts) <= endTime and isYoutubePlayed== False:
+        #print(ts)
+        time.sleep(5)
         ts = datetime.now().strftime('%H')
-        #webbrowser.open(play_link)
+        webbrowser.open(play_link)
         #print(play_link)
-
+        isYoutubePlayed = True
+    getPlayLink(result_link, startTime, endTime, isYoutubePlayed)
 youtubeLinkCrawler(str(search_term), 1)
-getPlayLink(result_link,startTime, endTime)
+getPlayLink(result_link,startTime, endTime, isYoutubePlayed)
 
