@@ -2,12 +2,17 @@ import requests
 import webbrowser
 from bs4 import BeautifulSoup
 from random import randint
+from datetime import datetime
 import time
+
 
 page_numbers = ["SADqAwA%253D", "SBTqAwA%253D", "SCjqAwA%253D"]
 search_terms_poll = ["Chopin", "beethoven", "Mozart"]
 search_term = search_terms_poll[randint(0,len(search_terms_poll)-1)]
 result_link=[]
+isYoutubePlayed = False
+startTime = "12"
+endTime ="18"
 #search term check
 #print(search_term)
 
@@ -26,11 +31,19 @@ def youtubeLinkCrawler(search_term, max_page):
                 result_link.append(href_url)
         page += 1
 
-def getPlayLink(result_link):
+def getPlayLink(result_link, startTime, endTime):
     play_link = result_link[randint(0, len(result_link) - 1)]
-    webbrowser.open(play_link)
-    #print(play_link)
+    ts = datetime.now().strftime('%H')
+    print(ts)
+    print(startTime)
+    print(endTime)
+    while ts >= startTime and ts <= endTime:
+        print(ts)
+        time.sleep(60)
+        ts = datetime.now().strftime('%H')
+        #webbrowser.open(play_link)
+        #print(play_link)
 
-#youtubeLinkCrawler(str(search_term), 1)
-#getPlayLink(result_link)
+youtubeLinkCrawler(str(search_term), 1)
+getPlayLink(result_link,startTime, endTime)
 
