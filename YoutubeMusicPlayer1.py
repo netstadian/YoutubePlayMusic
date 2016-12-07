@@ -5,8 +5,9 @@ from random import randint
 from datetime import datetime
 import time
 
-
+#Page number 1, 2, 3 only
 page_numbers = ["SADqAwA%253D", "SBTqAwA%253D", "SCjqAwA%253D"]
+#type search keyword
 search_terms_poll = ["Chopin", "beethoven", "Mozart"]
 search_term = search_terms_poll[randint(0,len(search_terms_poll)-1)]
 result_link=[]
