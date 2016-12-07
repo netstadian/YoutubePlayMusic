@@ -35,6 +35,7 @@ def youtubeLinkCrawler(search_term, max_page):
 def getPlayLink(result_link, startTime, endTime, isYoutubePlayed):
     play_link = result_link[randint(0, len(result_link) - 1)]
     ts = datetime.now().strftime('%H')
+    #when not the time
     print("Not playing, current time is: ", ts)
     time.sleep(5)
     #print(startTime)
